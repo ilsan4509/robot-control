@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.robot.project.MapMapper">
+	<!-- 전체 매장 로봇 맵불러오기 -->
+	<select id="getMapGrid" resultType="MapVO">
+		SELECT * FROM map_controller;
+	</select>
+	
+	<!-- path_plan -->
+	<!-- MySQL작업1 -->
+	<select id="modiMap1" resultType="MapVO">
+		UPDATE map_controller SET existence =#{existence} WHERE id =#{id} AND store_seq =#{store_seq};
+	</select>
+	<!-- MySQL작업2 -->
+	<select id="modiMap2" resultType="MapVO">
+		UPDATE map_controller SET existence =#{existence} WHERE id =#{id} AND store_seq =#{store_seq};
+	</select>
+	<!-- MySQL작업3 -->
+	<select id="modiMap3" resultType="MapVO">
+		UPDATE map_controller SET existence =#{existence} WHERE stem =#{stem} AND store_seq =#{store_seq};
+	</select>	
+	
+	<!-- arrival_assignment -->
+	<!-- MySQL작업4 -->
+	<select id="modiMap4" resultType="MapVO">
+		UPDATE map_controller SET existence =#{existence} WHERE stem =#{stem} AND store_seq =#{store_seq};
+	</select>
+	<!-- MySQL작업5 -->
+	<select id="modiMap5" resultType="MapVO">
+		UPDATE map_controller SET existence =#{existence} WHERE id =#{id} AND store_seq =#{store_seq};
+	</select>	
+	
+	<select id="getMapColumns" resultType="MapColumnsVO">
+		SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='map_controller';
+	</select>
+	<select id="getMapView" parameterType = "_int" resultType="MapViewVO">
+		SELECT * FROM map_view where store_seq = #{store_seq} ORDER by node_id;
+	</select>
+	<select id="getMaxNodeX" parameterType = "_int" resultType="_int">
+		SELECT max(node_x) FROM map_view WHERE store_seq = #{store_seq};
+	</select>
+	<select id="getMaxNodeY" parameterType = "_int" resultType="_int">
+		SELECT max(node_y) FROM map_view WHERE store_seq = #{store_seq};
+	</select>
+</mapper>

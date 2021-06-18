@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+   <typeAliases>
+   	  <!-- VO 클래스 위치 -->
+      <typeAlias alias="MapVO" type="org.robot.project.map.MapVO"/>
+      <typeAlias alias="MapColumnsVO" type="org.robot.project.map.MapColumnsVO"/>
+      <typeAlias alias="MapViewVO" type="org.robot.project.map.MapViewVO"/>
+      <typeAlias alias="AccountVO" type="org.robot.project.account.AccountVO"/>
+      
+   </typeAliases>
+   <environments default="development">
+      <environment id="development">
+         <transactionManager type="JDBC" />
+         <dataSource type="POOLED">
+        <property name="driver" value="com.mysql.jdbc.Driver" />
+        <property name="url" value="jdbc:mysql://127.0.0.1:3306/robot" />
+        <property name="username" value="root" />
+        <property name="password" value="535251" />
+            <!-- 서버 DB 연결 때 주석 풀어야하는 부분 
+            <property name="url" value="jdbc:mariadb://localhost:3306/vinocturne" />
+            <property name="username" value="vinocturne" />
+            <property name="password" value="standard1@" /> -->
+         </dataSource>
+      </environment>
+   </environments>
+   <mappers>
+      <!-- <mapper resource="mapper위치" /> -->
+      <mapper resource="mappers/MapMapper.xml" />
+      <mapper resource="mappers/AccountMapper.xml" />
+      
+   </mappers>
+   
+</configuration>
