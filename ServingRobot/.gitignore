@@ -2,3 +2,6 @@
 MANIFEST.MF
 /target/
 pom.properties
+.classpath 
+.project
+.settings
